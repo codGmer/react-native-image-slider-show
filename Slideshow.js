@@ -261,46 +261,50 @@ export default class Slideshow extends Component {
         </View>
         {/* END SECTION INDICATOR */}
         {/* SECTION ARROW LEFT */}
-        <View 
-          style={[
-            layoutArrow(this.props.height, this.props.arrowSize), 
-            { left: 10, height: 50 },
-          ]}>
-          <TouchableOpacity
-            onPress={() => this._prev()}>
-            {
-              this.props.arrowRight == undefined ? 
-              <View 
-                style={[
-                  iconArrow(this.props.arrowSize), 
-                  iconArrowLeft(this.props.arrowSize),
-                ]}/>
-              : 
-              this.props.arrowLeft
-            }
-          </TouchableOpacity>
-        </View>
+	{this.props.arrowLeftVisible ? (
+		<View 
+		  style={[
+		    layoutArrow(this.props.height, this.props.arrowSize), 
+		    { left: 10, height: 50 },
+		  ]}>
+		  <TouchableOpacity
+		    onPress={() => this._prev()}>
+		    {
+		      this.props.arrowRight == undefined ? 
+		      <View 
+			style={[
+			  iconArrow(this.props.arrowSize), 
+			  iconArrowLeft(this.props.arrowSize),
+			]}/>
+		      : 
+		      this.props.arrowLeft
+		    }
+		  </TouchableOpacity>
+		</View>
+	) : null}
         {/* END SECTION ARROW LEFT */}
         {/* SECTION ARROW RIGHT */}
-        <View 
-          style={[
-            layoutArrow(this.props.height, this.props.arrowSize), 
-            { right: 10, height: 50 },
-          ]}>
-          <TouchableOpacity
-            onPress={() => this._next()}>
-            {
-              this.props.arrowRight == undefined ? 
-              <View 
-                style={[
-                  iconArrow(this.props.arrowSize), 
-                  iconArrowRight(this.props.arrowSize),
-                ]}/>
-              : 
-              this.props.arrowRight
-            }
-          </TouchableOpacity>
-        </View>
+	{this.props.arrowRightVisible ? (
+		<View 
+		  style={[
+		    layoutArrow(this.props.height, this.props.arrowSize), 
+		    { right: 10, height: 50 },
+		  ]}>
+		  <TouchableOpacity
+		    onPress={() => this._next()}>
+		    {
+		      this.props.arrowRight == undefined ? 
+		      <View 
+			style={[
+			  iconArrow(this.props.arrowSize), 
+			  iconArrowRight(this.props.arrowSize),
+			]}/>
+		      : 
+		      this.props.arrowRight
+		    }
+		  </TouchableOpacity>
+		</View>
+	) : null}
         {/* END SECTION ARROW RIGHT */}
       </View>
     );
@@ -335,6 +339,8 @@ Slideshow.propTypes = {
   arrowRight: PropTypes.object,
 	onPress: PropTypes.func,
 	onPositionChanged: PropTypes.func,
+	arrowLeftVisible: PropTypes.bool,
+	arrowRightVisible: PropTypes.bool	
 };
 
 const setIndicatorSize = function (size) {
